@@ -1,5 +1,5 @@
 # fastq_info
-## Calculate fastq reads, average read length, genomesize (fasta) and actual sequencing depth/coverage
+## Calculate fastq reads, average read length, genome size in bp (fasta) and actual sequencing depth/coverage
 This is a handy yet simple Bash script to generate information for 1 or 2 fastq files- average reads and read length (if they are trimmed). Addtionally, script 3 can take in fasta assembly of those fastq files and generate the actual sequecning coverage.
 
 ## Usage
