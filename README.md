@@ -12,8 +12,8 @@ For fastq_info_2.sh, it takes 2 fastq files:
 % ./fastq_info_2.sh FILE1.fastq FILE2.fastq
 ```
 ## Outputs
-It will generate standard outputs e.g.:
+It will generate tab-delimited standard outputs e.g.:
 ```
            read_length     reads
-ABC2234.fastq   85.3177 1102746
+ABC2234.fastq         85    1102746
 ```
