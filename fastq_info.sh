@@ -2,8 +2,7 @@
 
 fastq=$1
 
-
-echo -n -e "\taverage_read_length\t"
+echo -n -e "\tread_length\t"
 echo -e "reads"
 echo -e -n "$fastq\t"
 averagecount=$(awk 'NR % 4 == 2 { s += length($1); t++} END {print s/t}' $fastq)
