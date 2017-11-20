@@ -12,7 +12,7 @@ readcount2=$(cat $fastq2| echo $((`wc -l`/4))) #read count in file 2
 totalreadcount=$(echo "$readcount1+$readcount2"|bc) #total read count of file 1 and file 2
 averagereadcount=$(echo "$totalreadcount/2"|bc) #average read count - parsed into bc command to be rounded
 
-echo -n -e "\taverage_read_length\t"
+echo -n -e "\tread_length\t"
 echo -e "reads"
 echo -e -n "$fastq1\t"
 echo -e -n "$averagereadlength\t"
