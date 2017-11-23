@@ -22,7 +22,7 @@ genomesize=$(awk '{ sum += $1 } END { print sum }' "$fasta"-oneline)
 
 #To calculate actual sequencing depth/coverage
 #sequencing depth= LN/G =average read length * average reads / genome size
-LN=$(echo "$averagereadcount*$averagereadlength")
+LN=$(echo "$averagereadcount*$averagereadlength*2")
 G=$genomesize
 coverage=$(echo "$LN/$G"|bc)
 
