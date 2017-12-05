@@ -15,11 +15,14 @@ shift $((OPTIND-1))
 #check for mandatory positional parameters - output usage and options 
 if [ $# -lt 3 ]; then
   echo ""
+  echo "This bash script can take in fasta assembly of those fastq files and generate the actual sequencing coverage if read length is known (parse into option -r)"
+  echo ""
   echo "Usage: $0 [options] fastq1 fastq2 fasta"
   echo "Option: -r readlength (def: $readlength)"
   echo "Version 1.1"
   echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
-  echo "5 December 2017"
+  echo ""
+
 exit 1
 fi
 fastq1=$1  #input 1
