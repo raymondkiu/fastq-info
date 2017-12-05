@@ -23,7 +23,7 @@ author () { echo "Author: Raymond Kiu     Raymond.Kiu@quadram.ac.uk";}
 readlength=100
 
 #parse the options
-while getopts ':r:hav' opt ; do    # -r needs an argument otherwise won't run
+while getopts ':r:hav' opt ; do    # to specify -r needs an option argument otherwise won't run
   case $opt in
     r) readlength=$OPTARG ;;
     h) usage; exit 1;;
