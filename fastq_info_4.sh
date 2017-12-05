@@ -1,33 +1,61 @@
 #!/bin/bash
 
+#print the options
+usage () {
+  echo ""
+  echo "This simple program can take in fasta assembly and fastq files to generate the actual sequencing coverage if read length is known (parse into option -r)"
+  echo ""
+  echo "Usage: $0 [options] fastq1 fastq2 fasta"
+  echo "Options:"
+  echo " -r readlength (e.g.125; default:100)"
+  echo " -h print usage and exit"
+  echo " -a print author and exit"
+  echo " -v print version and exit"
+  echo ""
+  echo "Version 1.2"
+  echo "Author: Raymond Kiu     Raymond.Kiu@quadram.ac.uk"
+  echo "";
+}
+version () { echo "Version 1.2";}
+author () { echo "Author: Raymond Kiu     Raymond.Kiu@quadram.ac.uk";}
+
 #set default for option -r
 readlength=100
+
 #parse the options
-while getopts 'r:' opt ; do
+while getopts ':r:hav' opt ; do    # -r needs an argument otherwise won't run
   case $opt in
     r) readlength=$OPTARG ;;
+    h) usage; exit 1;;
+    a) author; exit 1;;
+    v) version; exit 1;;
+    \?) echo "Invalid option: -$OPTARG" >&2; exit 1;;
+    :) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
+    *) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;   
   esac
 done
 
-# skip over the processed options
+#skip over the processed options
 shift $((OPTIND-1))
 
 #check for mandatory positional parameters - output usage and options 
-if [ $# -lt 3 ]; then
+if [ $# -lt 3 ]; then     #check for 3 mandatory positional arguments
   echo ""
   echo "This bash script can take in fasta assembly of those fastq files and generate the actual sequencing coverage if read length is known (parse into option -r)"
   echo ""
   echo "Usage: $0 [options] fastq1 fastq2 fasta"
-  echo "Option: -r readlength (def: $readlength)"
-  echo "Version 1.1"
+  echo "Option: -r readlength (e.g.125;default:100)"
+  echo "Version 1.2"
   echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
   echo ""
 
 exit 1
 fi
+
+#positional arguments
 fastq1=$1  #input 1
 fastq2=$2  #input 2
-fasta=$3
+fasta=$3   #input 3 
 
 #To calculate readcount
 readcount1=$(cat $fastq1| echo $((`wc -l`/4))) #read count in file 1
@@ -45,6 +73,7 @@ LN=$(echo "$readlength*2*$readcount")
 G=$genomesize
 coverage=$(echo "$LN/$G"|bc)
 
+#print tab-delimited output table
 echo -n -e "sample_name\t"
 echo -n -e "\tread_length\t"
 echo -n -e "reads\t"
