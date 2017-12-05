@@ -1,9 +1,28 @@
 #!/bin/bash
+
+#set default for option -r
+readlength=100
+#parse the options
+while getopts 'r:' opt ; do
+  case $opt in
+    r) readlength=$OPTARG ;;
+  esac
+done
+
+# skip over the processed options
+shift $((OPTIND-1))
+
+#check for mandatory positional parameters - output usage and options 
+if [ $# -lt 3 ]; then
+  echo "Usage: $0 [options] fastq1 fastq2 fasta"
+  echo "Option: -r readlength (def: $readlength)"
+exit 1
+fi
 fastq1=$1  #input 1
 fastq2=$2  #input 2
 fasta=$3
-readlength=$4  #e.g. 125, 200 (bp) do not double the calculation here, it will be done automatically in the pipeline
 
+#To calculate readcount
 readcount1=$(cat $fastq1| echo $((`wc -l`/4))) #read count in file 1
 readcount2=$(cat $fastq2| echo $((`wc -l`/4))) #read count in file 2
 totalreadcount=$(echo "$readcount1+$readcount2"|bc) #total read count of file 1 and file 2
@@ -33,3 +52,5 @@ echo -e "$coverage"
 #remove intermediary files
 rm "$fasta"-single;
 rm "$fasta"-oneline;
+
+
