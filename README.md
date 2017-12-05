@@ -1,6 +1,6 @@
 # fastq_info
 ## Calculate fastq reads, average read length, genome size in bp (fasta) and actual sequencing depth/coverage
-This includes a few handy yet simple Bash scripts to generate information for 1 or 2 fastq files (paired-end Illumina data)- average reads and read length (if they are trimmed). Addtionally, script 3 can take in fasta assembly of those fastq files and generate the actual sequencing coverage. Script 4 can take in fasta assembly of those fastq files and generate the actual sequencing coverage if read length is known.
+This includes a few handy yet simple Bash scripts to generate information for 1 or 2 fastq files (paired-end Illumina data)- average reads and read length (if they are trimmed). Addtionally, script 3 can take in fasta assembly of those fastq files and generate the actual sequencing coverage. Script 4 can take in fasta assembly of those fastq files and generate the actual sequencing coverage if read length is known (parse into option -r).
 
 ## Usage
 For fastq_info.sh, it only takes 1 fastq file:
@@ -15,11 +15,11 @@ For fastq_info_3.sh, it takes 2 fastq files (paired-end) and its assembly fasta 
 ```
 % ./fastq_info_3.sh FILE1.fastq FILE2.fastq FILE3.fasta
 ```
-For fastq_info_3.sh, it takes 2 fastq files (paired-end) and its assembly fasta file, with an additional read length (if known then use this) to compute the sequencing coverage:
+For fastq_info_4.sh, it takes 2 fastq files (paired-end) and its assembly fasta file, with an additional read length (if known then use this) to compute the sequencing coverage:
 ```
-% ./fastq_info_3.sh FILE1.fastq FILE2.fastq FILE3.fasta 125
+% ./fastq_info_3.sh -r READLENGTH (def:100) FILE1.fastq FILE2.fastq FILE3.fasta
 ```
-where 125 can be any read length.
+
 
 ## Outputs
 It will generate tab-delimited standard outputs e.g.:
