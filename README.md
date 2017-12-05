@@ -17,7 +17,7 @@ For fastq_info_3.sh, it takes 2 fastq files (paired-end) and its assembly fasta 
 ```
 For fastq_info_4.sh, it takes 2 fastq files (paired-end) and its assembly fasta file, with an additional read length (if known then use this) to compute the sequencing coverage:
 ```
-% ./fastq_info_3.sh -r READLENGTH (def:100) FILE1.fastq FILE2.fastq FILE3.fasta
+% ./fastq_info_4.sh -r READLENGTH (def:100) FILE1.fastq FILE2.fastq FILE3.fasta
 ```
 
 
