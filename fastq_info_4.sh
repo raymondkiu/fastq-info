@@ -14,8 +14,12 @@ shift $((OPTIND-1))
 
 #check for mandatory positional parameters - output usage and options 
 if [ $# -lt 3 ]; then
+  echo ""
   echo "Usage: $0 [options] fastq1 fastq2 fasta"
   echo "Option: -r readlength (def: $readlength)"
+  echo "Version 1.1"
+  echo "Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk"
+  echo "5 December 2017"
 exit 1
 fi
 fastq1=$1  #input 1
