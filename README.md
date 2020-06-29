@@ -10,7 +10,7 @@ $ fastqinfo-2.0.sh -h
 This bash script calculates actual sequencing coverage(X)
 Fasta assembly and raw fastq files (paired-end) are needed
 
-Usage: /hpc-home/kiur/script/fastqinfo-2.0.sh [options] fastq_R1 fastq_R2 fasta_assembly
+Usage: /fastqinfo-2.0.sh [options] fastq_R1 fastq_R2 fasta_assembly
 Option:
  -r insert size (default=125)
  -h print usage and exit
