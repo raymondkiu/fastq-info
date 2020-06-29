@@ -27,7 +27,7 @@ $ ./fastqinfo-2.0.sh -r INSERT_SIZE (default:125) R1.fastq R2.fastq ASSEMBLY.fas
 ```
 ### Inputs
 You will need R1 and R2 raw fastq files (paired-end) and a genome assembly (draft genome will do) to compute the coverage, or sequencing depth (X).
-Additionally you will need the insert size (or read length) for the fastq files, to quickly generate this:
+- Additionally you will need the insert size (or read length) for the fastq files, to quickly generate this:
 ```
 $ head -n 2 R1.fastq |tail -n 2|wc -c
 $ 250
@@ -39,7 +39,7 @@ GTTTGTATTGATTGAGGTGTTGTAACATTAGCATTACCTATCTCAAAGCCATTCTCTAACATATCTTTTGCATCTATGAG
 +
 AAAAAE6EAEEEEEEEEE/EEEEEE6/EAEEE/EEEEEEEEEEEEEEEEE/AEEEEE/EEEE/EEEEEAEAEAEEEAEEAEEEEAEEA<AEE</AEEEEEAEAE/EEAE<<<////EAAEE<AA/A/A<<6<<E<A/<<<6/A<<EEEA/E
 ```
-**WARNING: Using the wrong insert size will bias the outcomes and accuracy.**
+**WARNING: Using the wrong insert size will bias the outcomes and accuracy. Also this script is designed to calculate microbial genomes not tested on eukaryotic genomes.**
 
 ## Outputs
 It will generate tab-delimited standard outputs e.g.:
@@ -47,10 +47,10 @@ It will generate tab-delimited standard outputs e.g.:
 Sample   	Insert	Reads	Genome	Coverage(X)
 CA-68.fna	250	1014649	2499579	202
 ```
-Insert: insert size in bp
-Reads: total read counts in both paired-end fastq files
-Genome: Size (bp) of genome assembly supplied
-Coverage(X): estimated sequencing depth of the genome
+- Insert: insert size in bp
+- Reads: total read counts in both paired-end fastq files
+- Genome: Size (bp) of genome assembly supplied
+- Coverage(X): estimated sequencing depth of the genome
 
 ## Issues
 This script has been tested on Linux OS, it should run smoothly with no dependencies needed. Please report any issues to the [issues page](https://github.com/raymondkiu/fastq-info/issues).
