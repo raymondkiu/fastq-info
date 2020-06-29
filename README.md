@@ -1,35 +1,62 @@
 # fastq_info
-## Calculate fastq reads, average read length, genome size in bp (fasta) and actual sequencing depth/coverage
-This includes a few handy yet simple Bash scripts to generate information for 1 or 2 fastq files (paired-end Illumina data)- average reads and read length (if they are trimmed). Addtionally, script 3 can take in fasta assembly of those fastq files and generate the actual sequencing coverage. Script 4 can take in fasta assembly of those fastq files and generate the actual sequencing coverage if read length is known (parse into option -r).
+## Compute estimated sequencing depth/coverage of genomes
+This script generates estimated coverage information for paired-end fastq files (Illumina data). No dependencies needed - runs smoothly on Linux or Mac as this is a pure Bash script. Should generate outcomes within seconds.
 
 ## Usage
-For fastq_info.sh, it only takes 1 fastq file:
+### Options
 ```
-% ./fastq_info.sh FILE.fastq
-```
-For fastq_info_2.sh, it takes 2 fastq files (for paired-end data):
-```
-% ./fastq_info_2.sh FILE1.fastq FILE2.fastq
-```
-For fastq_info_3.sh, it takes 2 fastq files (paired-end) and its assembly fasta file to compute the sequencing coverage:
-```
-% ./fastq_info_3.sh FILE1.fastq FILE2.fastq FILE3.fasta
-```
-For fastq_info_4.sh, it takes 2 fastq files (paired-end) and its assembly fasta file, with an additional read length (if known then use this) to compute the sequencing coverage:
-```
-% ./fastq_info_4.sh -r READLENGTH (def:100) FILE1.fastq FILE2.fastq FILE3.fasta
+$ fastqinfo-2.0.sh -h
+
+This bash script calculates actual sequencing coverage(X)
+Fasta assembly and raw fastq files (paired-end) are needed
+
+Usage: /hpc-home/kiur/script/fastqinfo-2.0.sh [options] fastq_R1 fastq_R2 fasta_assembly
+Option:
+ -r insert size (default=125)
+ -h print usage and exit
+ -a print author and exit
+ -v print version and exit
+
+Version 2.0
+Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk
 ```
 
+### Run the software
+```
+$ ./fastqinfo-2.0.sh -r INSERT_SIZE (default:125) R1.fastq R2.fastq ASSEMBLY.fasta
+```
+### Inputs
+You will need R1 and R2 raw fastq files (paired-end) and a genome assembly (draft genome will do) to compute the coverage, or sequencing depth (X).
+Additionally you will need the insert size (or read length) for the fastq files, to quickly generate this:
+```
+$ head -n 2 R1.fastq |tail -n 2|wc -c
+$ 250
+```
+This is actually printing the second line of the fastq file and calculate the AGTC counts as follows:
+```
+@NB5
+GTTTGTATTGATTGAGGTGTTGTAACATTAGCATTACCTATCTCAAAGCCATTCTCTAACATATCTTTTGCATCTATGAGACAACAATTGGTTAATGGTTGAAATGGATGGTAATCTAAGTCGTGAAAATGAATATCTCCCGATTGATGTG
++
+AAAAAE6EAEEEEEEEEE/EEEEEE6/EAEEE/EEEEEEEEEEEEEEEEE/AEEEEE/EEEE/EEEEEAEAEAEEEAEEAEEEEAEEA<AEE</AEEEEEAEAE/EEAE<<<////EAAEE<AA/A/A<<6<<E<A/<<<6/A<<EEEA/E
+```
+**WARNING: Using the wrong insert size will bias the outcomes and accuracy.**
 
 ## Outputs
 It will generate tab-delimited standard outputs e.g.:
 ```
-           read_length     reads
-ABC2234.fastq         85    1102746
+Sample   	Insert	Reads	Genome	Coverage(X)
+CA-68.fna	250	1014649	2499579	202
 ```
-or with coverage using fastq_info_3.sh, e.g.:
-```
-  average_read_length     reads   genome  coverage
-ABC123.fasta    125      1102746   2859342  73
-```
+Insert: insert size in bp
+Reads: total read counts in both paired-end fastq files
+Genome: Size (bp) of genome assembly supplied
+Coverage(X): estimated sequencing depth of the genome
 
+## Issues
+This script has been tested on Linux OS, it should run smoothly with no dependencies needed. Please report any issues to the [issues page](https://github.com/raymondkiu/fastq-info/issues).
+
+## License
+[GPLv3](https://github.com/raymondkiu/fastq-info/blob/master/LICENSE)
+
+## Author
+Raymond Kiu Raymond.Kiu@quadram.ac.uk
