@@ -23,7 +23,7 @@ Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk
 
 ### Run the software
 ```
-$ ./fastqinfo-2.0.sh -r INSERT_SIZE (default:125) R1.fastq R2.fastq ASSEMBLY.fasta
+$ ./fastqinfo-2.0.sh -r INSERT_SIZE R1.fastq R2.fastq ASSEMBLY.fasta
 ```
 ### Inputs
 You will need R1 and R2 raw fastq files (paired-end) and a genome assembly (draft genome will do) to compute the coverage, or sequencing depth (X).
