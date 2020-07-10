@@ -33,7 +33,7 @@ Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk
 $ ./fastqinfo-2.0.sh -r INSERT_SIZE R1.fastq R2.fastq ASSEMBLY.fasta
 ```
 ### Inputs
-You will need R1 and R2 raw fastq files (paired-end) and a genome assembly (draft genome will do) to compute the coverage, or sequencing depth (X).
+You will need R1 and R2 raw fastq files (paired-end) and a genome assembly (draft genome will do) to compute the coverage, or sequencing depth (X). This is based on the fact that Illumina raw fastq files have the same insert size for every read.
 - Additionally you will need the insert size (or read length) for the fastq files, to quickly generate this:
 ```
 $ head -n 2 R1.fastq |tail -n 2|wc -c
