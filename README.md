@@ -1,6 +1,13 @@
 # fastq_info
 ## Compute estimated sequencing depth/coverage of genomes
-This script generates estimated coverage information for paired-end fastq files (Illumina data). No dependencies needed - runs smoothly on Linux or Mac as this is a pure Bash script. Should generate outcomes within seconds.
+This script generates estimated coverage information for paired-end fastq files (Illumina WGS data). No dependencies needed - runs smoothly on Linux or Mac as this is a pure Bash script. Should generate outcomes within seconds.
+
+This script based the calculation on the following:
+
+C = LN / G
+
+Where coverage (C) based on read length (L), number of reads (N), and genome size (G)
+from https://emea.illumina.com/science/technology/next-generation-sequencing/plan-experiments/read-length.html
 
 ## Usage
 ### Options
