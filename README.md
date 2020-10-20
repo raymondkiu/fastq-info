@@ -62,6 +62,10 @@ CA-68.fna	250	1014649	2499579	202
 ## Issues
 This script has been tested on Linux OS, it should run smoothly with no dependencies needed. Please report any issues to the [issues page](https://github.com/raymondkiu/fastq-info/issues).
 
+## Citation
+If you use fastq-info for results in your publication, please cite:
+* Kiu R, *fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes*, **GitHub** `https://github.com/raymondkiu/fastq-info`
+
 ## License
 [GPLv3](https://github.com/raymondkiu/fastq-info/blob/master/LICENSE)
 
