@@ -1,4 +1,4 @@
-# fastq_info
+# fastq-info
 ## Compute estimated sequencing depth/coverage of genomes
 This script generates estimated coverage information for paired-end fastq files (Illumina WGS data). No dependencies needed - runs smoothly on Linux or Mac as this is a pure Bash script. Should generate outcomes within seconds. You will need raw paired-end fastq files (R1 and R2) and genome assemblies to estimate the coverage.
 
